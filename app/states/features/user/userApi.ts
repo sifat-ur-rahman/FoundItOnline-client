@@ -6,7 +6,7 @@ export const userApi = baseApi.injectEndpoints({
     getProfile: builder.query({
       query: () => {
         return {
-          url: `/profile`,
+          url: `/my-profile`,
         };
       },
       providesTags: [tagTypes.user],
@@ -15,18 +15,19 @@ export const userApi = baseApi.injectEndpoints({
     editProfile: builder.mutation({
       query: (info) => {
         return {
-          url: `/profile`,
+          url: `/my-profile`,
           method: "PUT",
           body: info,
         };
       },
       invalidatesTags: [tagTypes.user],
     }),
-    deleteUser: builder.mutation({
-      query: (id) => {
+    UpdateUserStatus: builder.mutation({
+      query: (data) => {
         return {
-          url: `/users/${id}`,
-          method: "DELETE",
+          url: `/users/${data.id}/status`,
+          method: "PUT",
+          body: data.info,
         };
       },
       invalidatesTags: [tagTypes.user],
@@ -37,5 +38,5 @@ export const userApi = baseApi.injectEndpoints({
 export const {
   useGetProfileQuery,
   useEditProfileMutation,
-  useDeleteUserMutation,
+  useUpdateUserStatusMutation,
 } = userApi;

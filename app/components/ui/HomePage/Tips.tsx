@@ -1,6 +1,6 @@
 import Image from "next/image";
 import tipsImg from "@/app/assets/img03.png";
-import { FaRegCircleDot } from "react-icons/fa6";
+
 function Tips() {
   return (
     <div className="mt-10  container lg:mx-auto mx-5 grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">

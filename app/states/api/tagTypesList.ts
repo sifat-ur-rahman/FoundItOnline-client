@@ -1,5 +1,7 @@
 export enum tagTypes {
   user = "user",
-  blog = "blog",
+  lost = "lost",
+  found = "found",
+  claim = "claim",
 }
 export const tagTypesList = Object.values(tagTypes);
