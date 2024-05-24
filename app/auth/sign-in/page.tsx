@@ -1,6 +1,5 @@
 "use client";
 
-import LeftSideAuthComponent from "@/app/components/shared/LeftSideAuthComponent";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
