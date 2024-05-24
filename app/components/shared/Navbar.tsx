@@ -6,9 +6,11 @@ import { Avatar, Dropdown, MenuProps, Space } from "antd";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { UserOutlined } from "@ant-design/icons";
+import Image from "next/image";
+import logo from "@/app/assets/navLogo.png";
 
 const Navbar = () => {
-  const { user } = useAppSelector((state) => state.auth);
+  const { user }: any = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
@@ -41,27 +43,17 @@ const Navbar = () => {
     <div className="bg-white text-black">
       <div className="px-6 lg:px-8 flex items-center justify-between py-3">
         <Link href={"/"}>
-          <h2 className="font-bold text-3xl">Flat Share</h2>
+          <Image alt="" src={logo} width={200} height={15} />
         </Link>
-        <div className="flex items-center gap-8 font-medium">
-          {user?.email && (
-            // <Link href={'/dashboard'}>
-            //     <h3>Dashboard</h3>
-            // </Link>
-
-            <Dropdown menu={{ items }} placement="bottom" arrow>
-              <Space wrap size={16}>
-                <Avatar size="large" icon={<UserOutlined />} />
-              </Space>
-            </Dropdown>
-          )}
+        <div className="flex items-center gap-8 mr-4 font-medium">
           {user?.email ? (
-            <button
-              className="appBtn bg-red/80 hover:bg-red"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
+            <>
+              <Dropdown menu={{ items }} placement="bottom" arrow>
+                <Space wrap size={16}>
+                  <Avatar size="large" icon={<UserOutlined />} />
+                </Space>
+              </Dropdown>
+            </>
           ) : (
             <Link href={"/auth/sign-in"}>
               <button className="appBtn">Login</button>
