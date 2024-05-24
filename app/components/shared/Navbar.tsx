@@ -17,21 +17,15 @@ const Navbar = () => {
     dispatch(logOut());
     toast.success("Logout successfully");
   };
+
   const items: MenuProps["items"] = [
     {
       key: "1",
       label: <Link href="/profile">Profile</Link>,
     },
+
     {
       key: "2",
-      label: <Link href="/add-found-item">Add found item</Link>,
-    },
-    {
-      key: "3",
-      label: <Link href="/add-lost-item">Add lost item</Link>,
-    },
-    {
-      key: "4",
       label: (
         <p className=" text-red font-bold" onClick={handleLogout}>
           Logout
