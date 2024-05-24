@@ -16,7 +16,7 @@ const config: Config = {
         textGreyBlack: "#312F2F",
         textGrey: "#645D5D",
         borderColor: "#D5D8DB",
-        success: "#2AAE09",
+        success: "#04e03f",
         red: "#E11C1B",
       },
     },
