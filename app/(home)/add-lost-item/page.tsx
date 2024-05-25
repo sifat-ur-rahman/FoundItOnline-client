@@ -1,6 +1,7 @@
 "use client";
 
 import AppFormInput from "@/app/components/ui/AppFormInput";
+import { useCreateLostMutation } from "@/app/states/features/lost/lostApi";
 import { useGetProfileQuery } from "@/app/states/features/user/userApi";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -8,6 +9,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 function AddLostItem() {
+  const [createLost, { isLoading }] = useCreateLostMutation();
   interface FormData {
     images: FileList;
     category: string;
@@ -21,11 +23,11 @@ function AddLostItem() {
   const userInfo = data?.data;
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
   const router = useRouter();
-  const isLoading = false;
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     const {
@@ -61,11 +63,15 @@ function AddLostItem() {
             contactEmail,
           };
           console.log({ product });
-          // const result: any = await addProduct(product);
-          // if (result.data.success) {
-          //   toast.success("Product added successfully");
-          //   reset();
-          // }
+          const res: any = await createLost(product);
+          console.log({ res });
+          if (!res?.data?.success) {
+            toast.error(res?.message || "something went wrong");
+          } else {
+            toast.success("Successfully create Found Item");
+            reset();
+            router.push(`/`);
+          }
         }
       });
   };

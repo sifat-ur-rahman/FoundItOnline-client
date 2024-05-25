@@ -15,7 +15,7 @@ export const lostApi = baseApi.injectEndpoints({
     createLost: builder.mutation({
       query: (info) => {
         return {
-          url: `/lost-items`,
+          url: `/lost-item`,
           method: "POST",
           body: info,
         };

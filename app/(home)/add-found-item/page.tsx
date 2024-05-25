@@ -1,6 +1,7 @@
 "use client";
 
 import AppFormInput from "@/app/components/ui/AppFormInput";
+import { useCreateFoundMutation } from "@/app/states/features/found/foundApi";
 import { useGetProfileQuery } from "@/app/states/features/user/userApi";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -8,6 +9,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 function AddFoundItem() {
+  const [createFound, { isLoading }] = useCreateFoundMutation();
   interface FormData {
     images: FileList;
     category: string;
@@ -20,12 +22,12 @@ function AddFoundItem() {
   const { data } = useGetProfileQuery({ undefined });
   const userInfo = data?.data;
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
   const router = useRouter();
-  const isLoading = false;
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     const {
@@ -62,11 +64,16 @@ function AddFoundItem() {
             status: "AVAILABLE",
           };
           console.log({ product });
-          // const result: any = await addProduct(product);
-          // if (result.data.success) {
-          //   toast.success("Product added successfully");
-          //   reset();
-          // }
+
+          const res: any = await createFound(product);
+          console.log({ res });
+          if (!res?.data?.success) {
+            toast.error(res?.message || "something went wrong");
+          } else {
+            toast.success("Successfully create Found Item");
+            reset();
+            router.push(`/`);
+          }
         }
       });
   };

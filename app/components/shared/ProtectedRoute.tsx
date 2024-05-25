@@ -1,3 +1,4 @@
+"use client";
 import { useCurrentToken } from "@/app/states/features/auth/authSlice";
 import { useAppSelector } from "@/app/states/hook";
 import { useRouter } from "next/navigation";
