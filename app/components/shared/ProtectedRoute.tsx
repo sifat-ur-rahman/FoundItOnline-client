@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children }: TProtectedRouteProps) => {
   const token = useAppSelector(useCurrentToken);
 
   if (!token) {
-    return router.push("/");
+    return router.push("/auth/sign-in");
   }
 
   return children;
