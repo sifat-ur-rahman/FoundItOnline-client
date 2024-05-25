@@ -41,6 +41,7 @@ const AppFormInput = ({
                 ...(required && { required: true }),
                 ...(type === "number" && { valueAsNumber: true }),
               })}
+              defaultValue={defaultValue}
               type={
                 type !== "password"
                   ? type

@@ -24,19 +24,18 @@ function Footer() {
 
   return (
     <footer className="text-slate-500 bg font-medium relative px-2">
-      <div className="absolute inset-x-0 top-0 h-3 "></div>
       <div className="shadow-t sm:shadow-md py-8">
         <div className="container mx-auto">
-          <section className="mb-10 flex justify-between px-8 py-1 border-2">
-            <div className="flex items-center">
+          <section className="mb-10 flex lg:flex-row flex-col items-center self-center justify-between px-8 py-1 border-2">
+            <div className="flex items-center lg:my-0 my-3">
               <Image src={logo} alt="logo" width={200} height={20} />
             </div>
-            <div className="flex items-center">
+            <div className="lg:flex flex-none items-center text-center">
               <div className="flex items-center">
                 <BsFillTelephoneFill className="text-red mr-1" />
                 <p className="normalText">987-0980-9809</p>
               </div>
-              <div className="flex items-center mx-8">
+              <div className="flex items-center lg:my-0 my-2 lg:mx-8">
                 <CgMail className="text-red mr-1" />
                 <p className="normalText">Info@youemail.com</p>
               </div>
@@ -55,7 +54,7 @@ function Footer() {
                 taciti rhoncus, id parturient dignissim facilisis lobortis
                 varius justo tempor magnis
               </p>
-              <div className="mt-4 flex items-center">
+              <div className="mt-4 flex items-center justify-center">
                 {socialLinks.map((link) => (
                   <a
                     key={link.name}
@@ -69,7 +68,7 @@ function Footer() {
                 ))}
               </div>
             </div>
-            <div>
+            <div className="text-center lg:text-left">
               <h3 className="text-2xl text-blue-600 font-bold mb-4">
                 Our Services
               </h3>
@@ -78,14 +77,14 @@ function Footer() {
                   Tech Solutions
                 </li>
                 <li className="mb-2 text-textBlack transition-all duration-300 hover:text-slate-400 hover:ml-4 cursor-pointer">
-                  Digital Marketing
+                  Report Lost Item
                 </li>
                 <li className="mb-2 text-textBlack transition-all duration-300 hover:text-slate-400 hover:ml-4 cursor-pointer">
-                  Web Development
+                  Report Found Item
                 </li>
               </ul>
             </div>
-            <div>
+            <div className="text-center lg:text-left">
               <h3 className="text-blue-600 text-2xl font-bold mb-4">
                 Useful Links
               </h3>
@@ -107,9 +106,9 @@ function Footer() {
             </div>
           </div>
           <hr />
-          <div className=" text-center flex items-center justify-between ">
+          <div className=" text-center lg:flex flex-none items-center justify-between ">
             <p className="text-textBlack hover:text-gray-600 mt-3">
-              © FoundIt Online 2023 | All Rights Reserved
+              © FoundIt Online 2024 | All Rights Reserved
             </p>
             <div className="flex mt-3 ">
               <p className="hover:text-gray-600">Trams & Condition</p>

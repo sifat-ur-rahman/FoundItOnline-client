@@ -1,22 +1,28 @@
 "use client";
 
-import LeftSideAuthComponent from "@/app/components/shared/LeftSideAuthComponent";
 import AppFormInput from "@/app/components/ui/AppFormInput";
-import { useForgotPasswordMutation } from "@/app/states/features/auth/authApi";
-import { useAppSelector } from "@/app/states/hook";
+import AppLoading from "@/app/components/ui/AppLoading";
+import {
+  useEditProfileMutation,
+  useGetProfileQuery,
+} from "@/app/states/features/user/userApi";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 interface FormData {
-  currentPassword: string;
-  newPassword: string;
+  username: string;
+  name: string;
+  email: string;
 }
 
-const ForgotPassword = () => {
-  const { user } = useAppSelector((state) => state?.auth);
-  const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
+const UpdateProfile = () => {
+  const { data: user, isLoading: userDataLoading } = useGetProfileQuery({
+    undefined,
+  });
+  const [editProfile, { isLoading }] = useEditProfileMutation();
+
   const {
     register,
     handleSubmit,
@@ -24,23 +30,17 @@ const ForgotPassword = () => {
   } = useForm<FormData>();
   const router = useRouter();
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    if (!user) {
-      return toast.error("Please login and then try again to change password");
-    }
-
     const submittedData = {
-      email: user?.email,
-      currentPassword: data?.currentPassword,
-      newPassword: data?.newPassword,
+      name: data?.name,
     };
 
-    forgotPassword(submittedData)
+    editProfile(submittedData)
       .unwrap()
       .then((res: any) => {
         if (!res?.success) {
           toast.error(res?.message || "something went wrong");
         } else {
-          toast.success("Successfully Change password");
+          toast.success("Successfully Profile update");
           router.push(`/profile`);
         }
       })
@@ -48,48 +48,51 @@ const ForgotPassword = () => {
         toast.error(res?.data?.message || "something went wrong");
       });
   };
-
+  if (userDataLoading) {
+    return <AppLoading />;
+  }
   return (
     <div className="flex lg:h-[100vh]">
       <div className="w-full lg:w-[100%] h-screen lg:h-full px-4 lg:px-0 overflow-auto flex items-center justify-center ">
         <div className="w-full lg:max-w-lg mx-auto py-8 mt-10 lg:py-20 2xl:py-36">
           <h2 className="text-2xl text-center lg:text-4xl font-bold text-textBlack pb-1 lg:pb-2">
-            Change Password
+            Profile Update
           </h2>
-          <p className="text-[#645D5D] text-xs text-center lg:text-sm">
-            Secure Your Access, Secure Your World
-          </p>
 
           <form
             className="w-full md:w-[500px] 2xl:w-[560px] py-4 2xl:py-5 space-y-3 lg:space-y-4 2xl:space-y-5"
             onSubmit={handleSubmit(onSubmit)}
           >
             <AppFormInput
-              name="currentPassword"
+              name="name"
               required={true}
               register={register}
-              type="password"
-              label="Current password"
-              error={errors.currentPassword}
+              defaultValue={user?.data?.name}
+              type="text"
+              label="Full Name"
+              error={errors.name}
             />
 
-            <div>
-              <AppFormInput
-                name="newPassword"
-                required={true}
-                register={register}
-                type="password"
-                label="New Password"
-                error={errors.newPassword}
-              />
-
-              <div className="text-textBlack ml-5 text-xs mt-2 space-y-1">
-                <p className="list-item">Minimum length of 6-10 characters</p>
-                <p className="list-item">
-                  Only lowercase, numeric and symbols allowed
-                </p>
-              </div>
-            </div>
+            <AppFormInput
+              name="email"
+              readOnly
+              required={true}
+              defaultValue={user?.data?.email}
+              register={register}
+              type="text"
+              label="Your Email"
+              error={errors.email}
+            />
+            <AppFormInput
+              name="username"
+              readOnly
+              required={true}
+              defaultValue={user?.data?.username}
+              register={register}
+              type="text"
+              label="Your User Name"
+              error={errors.username}
+            />
 
             {isLoading ? (
               <button className="appBtn px-10 flex items-center justify-center w-full mt-4 lg:mt-6 ">
@@ -97,7 +100,7 @@ const ForgotPassword = () => {
               </button>
             ) : (
               <button type="submit" className="appBtn mt-4 lg:mt-6 w-full">
-                Change Password
+                Submit
               </button>
             )}
           </form>
@@ -107,4 +110,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default UpdateProfile;

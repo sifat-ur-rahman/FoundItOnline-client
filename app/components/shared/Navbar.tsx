@@ -40,6 +40,7 @@ const Navbar = () => {
           <Image alt="" src={logo} width={200} height={15} />
         </Link>
         <div className="flex items-center gap-8 mr-4 font-medium">
+          {user?.role === "ADMIN" && <Link href={"/dashboard"}>Dashboard</Link>}
           {user?.email ? (
             <>
               <Dropdown menu={{ items }} placement="bottom" arrow>

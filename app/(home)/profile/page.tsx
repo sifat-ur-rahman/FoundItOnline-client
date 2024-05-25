@@ -6,8 +6,9 @@ import { useGetFoundByUserQuery } from "@/app/states/features/found/foundApi";
 import { useGetLostByUserQuery } from "@/app/states/features/lost/lostApi";
 import { useGetProfileQuery } from "@/app/states/features/user/userApi";
 import { ArrowRightOutlined } from "@ant-design/icons";
+import { Popover } from "antd";
 import Link from "next/link";
-import { FaRegEdit } from "react-icons/fa";
+import { FaRegEdit, FaKey } from "react-icons/fa";
 
 function Profile() {
   const { data, isLoading } = useGetProfileQuery({ undefined });
@@ -25,10 +26,17 @@ function Profile() {
 
   return (
     <div className="min-h-screen container mx-auto">
-      <div className="flex justify-end ">
-        <p className="p-3">
-          <FaRegEdit className="text-2xl " />
-        </p>
+      <div className="flex justify-between ">
+        <Link href={"/auth/change-password"}>
+          <Popover title="Change your password">
+            <FaKey className="text-2xl hover:text-blue-500 " />
+          </Popover>
+        </Link>
+        <Link href={"/profile/update-profile"}>
+          <Popover title="Edit your profile">
+            <FaRegEdit className="text-2xl  hover:text-blue-500" />
+          </Popover>
+        </Link>
       </div>
       <div className="my-10  grid grid-cols-1 lg:grid-cols-2 gap-7">
         <div className="bg-slate-200 p-3 rounded-xl font-bold">
