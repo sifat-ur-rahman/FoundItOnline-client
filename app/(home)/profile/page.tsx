@@ -1,6 +1,6 @@
 "use client";
 import AppLoading from "@/app/components/ui/AppLoading";
-import AppModal from "@/app/components/ui/AppModal";
+
 import { useGetClaimByUserQuery } from "@/app/states/features/claim/claimApi";
 import { useGetFoundByUserQuery } from "@/app/states/features/found/foundApi";
 import { useGetLostByUserQuery } from "@/app/states/features/lost/lostApi";

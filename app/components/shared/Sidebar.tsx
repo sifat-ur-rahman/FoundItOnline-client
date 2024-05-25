@@ -3,7 +3,7 @@
 import { CgProfile } from "react-icons/cg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MdDashboard, MdPostAdd } from "react-icons/md";
+import { MdDashboard } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
 
 const Sidebar = ({ isOpen }: { isOpen: any }) => {
@@ -17,21 +17,27 @@ const Sidebar = ({ isOpen }: { isOpen: any }) => {
       relativePath: "",
     },
     {
-      path: "/dashboard/profile",
+      path: "/dashboard/all-users",
       Icon: CgProfile,
-      label: "Profile",
+      label: "Users",
       relativePath: "",
     },
     {
-      path: "/dashboard/blogs",
+      path: "/dashboard/all-lost-item",
       Icon: TbLogs,
-      label: "Blogs",
+      label: "Lost Item",
       relativePath: "",
     },
     {
-      path: "/dashboard/add-blog",
-      Icon: MdPostAdd,
-      label: "Add Blog",
+      path: "/dashboard/all-found-item",
+      Icon: TbLogs,
+      label: "Found Item",
+      relativePath: "",
+    },
+    {
+      path: "/dashboard/all-claim-item",
+      Icon: TbLogs,
+      label: "Claim Item",
       relativePath: "",
     },
   ];

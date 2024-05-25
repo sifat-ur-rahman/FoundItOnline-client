@@ -11,6 +11,14 @@ export const userApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.user],
     }),
+    getAllUsers: builder.query({
+      query: () => {
+        return {
+          url: `/all-users`,
+        };
+      },
+      providesTags: [tagTypes.user],
+    }),
 
     editProfile: builder.mutation({
       query: (info) => {
@@ -23,11 +31,11 @@ export const userApi = baseApi.injectEndpoints({
       invalidatesTags: [tagTypes.user],
     }),
     UpdateUserStatus: builder.mutation({
-      query: (data) => {
+      query: (queryData) => {
         return {
-          url: `/users/${data.id}/status`,
+          url: `/user/${queryData.id}/status`,
           method: "PUT",
-          body: data.info,
+          body: queryData.userStatus,
         };
       },
       invalidatesTags: [tagTypes.user],
@@ -39,4 +47,5 @@ export const {
   useGetProfileQuery,
   useEditProfileMutation,
   useUpdateUserStatusMutation,
+  useGetAllUsersQuery,
 } = userApi;
