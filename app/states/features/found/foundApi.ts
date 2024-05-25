@@ -25,7 +25,8 @@ export const foundApi = baseApi.injectEndpoints({
     getFoundByUser: builder.query({
       query: (id) => {
         return {
-          url: `/found-items/${id}`,
+          url: `/found-items/${id.userId}`,
+          method: "GET",
         };
       },
       providesTags: [tagTypes.found],

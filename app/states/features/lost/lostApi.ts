@@ -25,7 +25,7 @@ export const lostApi = baseApi.injectEndpoints({
     getLostByUser: builder.query({
       query: (id) => {
         return {
-          url: `/lost-items/${id}`,
+          url: `/lost-items/${id.userId}`,
         };
       },
       providesTags: [tagTypes.found],

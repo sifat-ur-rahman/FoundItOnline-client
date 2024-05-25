@@ -1,15 +1,23 @@
 "use client";
 import AppLoading from "@/app/components/ui/AppLoading";
 import AppModal from "@/app/components/ui/AppModal";
+import { useGetClaimByUserQuery } from "@/app/states/features/claim/claimApi";
+import { useGetFoundByUserQuery } from "@/app/states/features/found/foundApi";
+import { useGetLostByUserQuery } from "@/app/states/features/lost/lostApi";
 import { useGetProfileQuery } from "@/app/states/features/user/userApi";
-import { Skeleton, Spin } from "antd";
+import { ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { FaRegEdit } from "react-icons/fa";
 
 function Profile() {
   const { data, isLoading } = useGetProfileQuery({ undefined });
   const userInfo = data?.data;
-  console.log(userInfo);
+
+  const userId = userInfo?.id;
+
+  const { data: claimData } = useGetClaimByUserQuery({ userId });
+  const { data: lostData } = useGetLostByUserQuery({ userId });
+  const { data: foundData } = useGetFoundByUserQuery({ userId });
 
   if (isLoading) {
     return <AppLoading />;
@@ -20,7 +28,6 @@ function Profile() {
       <div className="flex justify-end ">
         <p className="p-3">
           <FaRegEdit className="text-2xl " />
-          <AppModal button={true}>e</AppModal>
         </p>
       </div>
       <div className="my-10  grid grid-cols-1 lg:grid-cols-2 gap-7">
@@ -50,24 +57,39 @@ function Profile() {
           className="flex flex-col border hover:border-orange-400 hover:bg-orange-50 items-center p-4 rounded-2xl"
         >
           <p className="text-2xl font-bold">You have</p>
-          <p className="text-4xl font-extrabold text-red">3</p>
+          <p className="text-4xl font-extrabold text-red">
+            {lostData?.data?.length}
+          </p>
           <p className="text-3xl font-bold">Lost item</p>
+          <p className="text-sm text-blue-400 my-2">
+            see more <ArrowRightOutlined />
+          </p>
         </Link>
         <Link
           href={"/profile/my-found-item"}
           className="flex flex-col border hover:border-green-400 hover:bg-green-50 items-center p-4 rounded-2xl"
         >
           <p className="text-2xl font-bold">You have</p>
-          <p className="text-4xl font-extrabold text-green-500">2</p>
+          <p className="text-4xl font-extrabold text-green-500">
+            {foundData?.data?.length}
+          </p>
           <p className="text-3xl font-bold">Found item</p>
+          <p className="text-sm text-blue-400 my-2">
+            see more <ArrowRightOutlined />
+          </p>
         </Link>
         <Link
           href={"/profile/my-claim-item"}
           className="flex flex-col border hover:border-amber-300 hover:bg-amber-50 items-center p-4 rounded-2xl"
         >
           <p className="text-2xl font-bold">You have</p>
-          <p className="text-4xl font-extrabold text-yellow-500">3</p>
+          <p className="text-4xl font-extrabold text-yellow-500">
+            {claimData?.data?.length}
+          </p>
           <p className="text-3xl font-bold">Claim item</p>
+          <p className="text-sm text-blue-400 my-2">
+            see more <ArrowRightOutlined />
+          </p>
         </Link>
       </div>
     </div>
