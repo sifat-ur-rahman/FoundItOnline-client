@@ -3,7 +3,7 @@ import { tagTypes } from "../../api/tagTypesList";
 
 export const foundApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getAllfound: builder.query({
+    getAllFound: builder.query({
       query: () => {
         return {
           url: `/found-items`,
@@ -37,5 +37,5 @@ export const foundApi = baseApi.injectEndpoints({
 export const {
   useCreateFoundMutation,
   useGetFoundByUserQuery,
-  useGetAllfoundQuery,
+  useGetAllFoundQuery,
 } = foundApi;
