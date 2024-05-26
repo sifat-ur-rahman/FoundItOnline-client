@@ -3,8 +3,6 @@
 import { useGetAllFoundQuery } from "@/app/states/features/found/foundApi";
 import Image from "next/image";
 import Link from "next/link";
-import AppModal from "../AppModal";
-import { Button } from "antd";
 
 function FoundItem() {
   const { data, isLoading } = useGetAllFoundQuery({ undefined });
@@ -37,15 +35,6 @@ function FoundItem() {
                 <span className="font-bold">{data?.locationFound}</span>
               </p>
             </div>
-            <AppModal
-              button={
-                <button className="px-6 py-3  place-self-center bottom-0 bg-blue-600 font-bold text-white rounded-lg my-3 border border-blue-600 hover:bg-blue-100 hover:text-blue-700 ">
-                  Claim
-                </button>
-              }
-            >
-              abd
-            </AppModal>
           </div>
         ))}
       </div>
@@ -53,7 +42,7 @@ function FoundItem() {
         href="/all-found-item"
         className="px-6 py-3 bg-green-600 font-bold text-white rounded-lg my-3 border border-green-600 hover:bg-green-100 hover:text-green-700"
       >
-        See More
+        See All Founded Item
       </Link>
     </div>
   );

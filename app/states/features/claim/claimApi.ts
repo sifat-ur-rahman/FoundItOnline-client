@@ -31,11 +31,11 @@ export const claimApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.claim],
     }),
     UpdateClaimStatus: builder.mutation({
-      query: (data) => {
+      query: (queryData) => {
         return {
-          url: `/claim/${data.id}`,
+          url: `/claim/${queryData.id}`,
           method: "PUT",
-          body: data.info,
+          body: queryData.claimStatus,
         };
       },
       invalidatesTags: [tagTypes.claim],
