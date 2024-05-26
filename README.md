@@ -1,8 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FoundIt Online Client
 
-## Getting Started
+Welcome to the Lost & Found Client repository. This project is the front-end part of the Lost & Found platform, a community-driven website designed to help individuals report and reclaim lost items.
 
-First, run the development server:
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Project Structure](#project-structure)
 
 ```bash
 npm run dev
