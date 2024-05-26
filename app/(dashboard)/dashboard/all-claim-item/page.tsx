@@ -82,7 +82,7 @@ function AllClaimItem() {
           <p>{data?.status}</p>
           <Dropdown overlay={getMenu(data.id)} placement="bottom" arrow>
             <Space wrap size={16}>
-              <button className="border border-blue-200">Action</button>
+              <button className="border p-2 rounded-lg border-blue-200">Action</button>
             </Space>
           </Dropdown>
         </div>

@@ -53,7 +53,7 @@ const ForgotPassword = () => {
 
   return (
     <div className="flex lg:h-[100vh]">
-      <Link href={"/"} className="mt-10 ml-10 pl-5">
+      <Link href={"/"} className="lg:mt-10 mt-3 lg:ml-10 ml-3 lg:pl-5 pl-2">
         <Popover title="Back to home page">
           <CloseOutlined className="text-4xl font-bold hover:text-blue-500" />
         </Popover>
