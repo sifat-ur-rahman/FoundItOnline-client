@@ -10,6 +10,8 @@ import { verifyToken } from "@/app/utils/verifyToken";
 import { setUser } from "@/app/states/features/auth/authSlice";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import AppFormInput from "@/app/components/ui/AppFormInput";
+import { CloseOutlined } from "@ant-design/icons";
+import { Popover } from "antd";
 
 interface FormData {
   usernameOrEmail: string;
@@ -39,7 +41,7 @@ const Login = () => {
           dispatch(setUser({ user, accessToken: res?.data?.accessToken }));
           if (res?.data?.role === "ADMIN") {
             console.log(res?.data?.role);
-            router.push(`/profile`);
+            router.push(`/dashboard`);
           } else if (res?.data?.role === "USER") {
             router.push(`/`);
           }
@@ -52,13 +54,15 @@ const Login = () => {
 
   return (
     <div className="flex lg:h-[100vh]">
-      {/* this is left side div  */}
-      {/* <LeftSideAuthComponent /> */}
-      {/* this is form and other staff  */}
+      <Link href={"/"} className="mt-10 ml-10 pl-5">
+        <Popover title="Back to home page">
+          <CloseOutlined className="text-4xl font-bold hover:text-blue-500" />
+        </Popover>
+      </Link>
       <div className="w-full lg:w-[100%] h-screen lg:h-full px-4 lg:px-0 overflow-auto flex items-center justify-center ">
         <div className="w-full lg:max-w-lg mx-auto py-8 mt-10 lg:py-20 2xl:py-36">
           <h2 className="text-2xl lg:text-4xl font-bold text-textBlack pb-1 lg:pb-2">
-            Login to your account{" "}
+            Login to your account
           </h2>
 
           <form

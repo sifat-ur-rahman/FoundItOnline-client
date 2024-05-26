@@ -1,14 +1,21 @@
 "use client";
-
+import { logOut } from "@/app/states/features/auth/authSlice";
+import { useAppDispatch } from "@/app/states/hook";
 import { CgProfile } from "react-icons/cg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdDashboard } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
-
+import { toast } from "react-toastify";
+import { LogoutOutlined } from "@ant-design/icons";
 const Sidebar = ({ isOpen }: { isOpen: any }) => {
   const pathname = usePathname();
+  const dispatch = useAppDispatch();
 
+  const handleLogout = () => {
+    dispatch(logOut());
+    toast.success("Logout successfully");
+  };
   const sidebarLinks = [
     {
       path: "/dashboard",
@@ -17,8 +24,14 @@ const Sidebar = ({ isOpen }: { isOpen: any }) => {
       relativePath: "",
     },
     {
-      path: "/dashboard/all-users",
+      path: "/profile",
       Icon: CgProfile,
+      label: "Profile",
+      relativePath: "",
+    },
+    {
+      path: "/dashboard/all-users",
+      Icon: TbLogs,
       label: "Users",
       relativePath: "",
     },
@@ -38,6 +51,16 @@ const Sidebar = ({ isOpen }: { isOpen: any }) => {
       path: "/dashboard/all-claim-item",
       Icon: TbLogs,
       label: "Claim Item",
+      relativePath: "",
+    },
+    {
+      path: "",
+      Icon: LogoutOutlined,
+      label: (
+        <p className=" text-red font-bold" onClick={handleLogout}>
+          Logout
+        </p>
+      ),
       relativePath: "",
     },
   ];
