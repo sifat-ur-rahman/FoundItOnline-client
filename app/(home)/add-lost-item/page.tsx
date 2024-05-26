@@ -81,7 +81,7 @@ function AddLostItem() {
       <div className="w-full lg:w-[100%]   px-4 lg:px-0 overflow-auto flex items-center justify-center ">
         <div className="w-full lg:max-w-lg mx-auto py-8  lg:py-20 2xl:py-36">
           <h2 className="text-2xl lg:text-4xl font-bold text-textBlack pb-1 lg:pb-2 text-center">
-            Describe the Object you found
+            Describe the Object you Lost
           </h2>
 
           <form
