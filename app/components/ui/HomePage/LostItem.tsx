@@ -42,7 +42,7 @@ function LostItem() {
         href="/all-lost-item"
         className="px-6 my-3 py-3 bg-rose-400 font-bold text-white rounded-lg  border border-rose-500 hover:bg-rose-100 hover:text-rose-700"
       >
-        See More
+        See All Lost Item
       </Link>
     </div>
   );

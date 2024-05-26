@@ -1,9 +1,6 @@
 "use client";
 import AppLoading from "@/app/components/ui/AppLoading";
-
 import Image from "next/image";
-import Link from "next/link";
-import { LeftCircleOutlined } from "@ant-design/icons";
 import { useGetAllLostQuery } from "@/app/states/features/lost/lostApi";
 import { Empty } from "antd";
 

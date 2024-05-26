@@ -20,7 +20,7 @@ function AllFoundItem() {
     contactPhone: string;
   }
 
-  const [createClaim] = useCreateClaimMutation();
+  const [createClaim, { isLoading: createLoading }] = useCreateClaimMutation();
   const { data, isLoading } = useGetAllFoundQuery({ undefined });
 
   const foundData = data?.data;
@@ -139,7 +139,7 @@ function AllFoundItem() {
                   error={errors.contactPhone}
                 />
 
-                {isLoading ? (
+                {createLoading ? (
                   <button className="appBtn px-10 flex items-center justify-center w-full mt-4 lg:mt-6 ">
                     <AiOutlineLoading3Quarters className="animate-spin text-white text-2xl" />
                   </button>
