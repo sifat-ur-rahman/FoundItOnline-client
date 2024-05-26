@@ -23,9 +23,17 @@ const Navbar = () => {
       key: "1",
       label: <Link href="/profile">Profile</Link>,
     },
-
     {
       key: "2",
+      label: (
+        <Link className="lg:hidden block hover:text-blue-500" href="/about-us">
+          About Us
+        </Link>
+      ),
+    },
+
+    {
+      key: "3",
       label: (
         <p className=" text-red font-bold" onClick={handleLogout}>
           Logout
@@ -40,12 +48,26 @@ const Navbar = () => {
           <Image alt="" src={logo} width={200} height={15} />
         </Link>
         <div className="flex items-center gap-8 mr-4 font-medium">
-          {user?.role === "ADMIN" && <Link href={"/dashboard"}>Dashboard</Link>}
+          <Link
+            className="hidden lg:block hover:text-blue-500"
+            href="/about-us"
+          >
+            About Us
+          </Link>
+          {user?.role === "ADMIN" && (
+            <Link className="hover:text-blue-500" href={"/dashboard"}>
+              Dashboard
+            </Link>
+          )}
           {user?.email ? (
             <>
               <Dropdown menu={{ items }} placement="bottom" arrow>
                 <Space wrap size={16}>
-                  <Avatar size="large" icon={<UserOutlined />} />
+                  <Avatar
+                    className="hover:text-blue-500"
+                    size="large"
+                    icon={<UserOutlined />}
+                  />
                 </Space>
               </Dropdown>
             </>
