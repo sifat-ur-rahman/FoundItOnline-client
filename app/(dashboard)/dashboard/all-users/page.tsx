@@ -4,8 +4,7 @@ import {
   useGetAllUsersQuery,
   useUpdateUserStatusMutation,
 } from "@/app/states/features/user/userApi";
-import Link from "next/link";
-import { LeftCircleOutlined } from "@ant-design/icons";
+
 import { Dropdown, Empty, Menu, Space } from "antd";
 import { toast } from "react-toastify";
 
@@ -79,7 +78,7 @@ function AllUsers() {
           <p>{data?.status}</p>
           <Dropdown overlay={getMenu(data.id)} placement="bottom" arrow>
             <Space wrap size={16}>
-              <button>Action</button>
+              <button className="border border-blue-200">Action</button>
             </Space>
           </Dropdown>
         </div>

@@ -4,11 +4,13 @@ import LeftSideAuthComponent from "@/app/components/shared/LeftSideAuthComponent
 import AppFormInput from "@/app/components/ui/AppFormInput";
 import { useForgotPasswordMutation } from "@/app/states/features/auth/authApi";
 import { useAppSelector } from "@/app/states/hook";
+import { Popover } from "antd";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "react-toastify";
-
+import { CloseOutlined } from "@ant-design/icons";
 interface FormData {
   currentPassword: string;
   newPassword: string;
@@ -51,6 +53,11 @@ const ForgotPassword = () => {
 
   return (
     <div className="flex lg:h-[100vh]">
+      <Link href={"/"} className="mt-10 ml-10 pl-5">
+        <Popover title="Back to home page">
+          <CloseOutlined className="text-4xl font-bold hover:text-blue-500" />
+        </Popover>
+      </Link>
       <div className="w-full lg:w-[100%] h-screen lg:h-full px-4 lg:px-0 overflow-auto flex items-center justify-center ">
         <div className="w-full lg:max-w-lg mx-auto py-8 mt-10 lg:py-20 2xl:py-36">
           <h2 className="text-2xl text-center lg:text-4xl font-bold text-textBlack pb-1 lg:pb-2">
