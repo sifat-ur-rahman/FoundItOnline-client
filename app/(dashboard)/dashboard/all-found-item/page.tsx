@@ -6,15 +6,13 @@ import { Table, Empty } from "antd";
 import Image from "next/image";
 
 function AllFoundItem() {
-  const { data, isLoading } = useGetAllFoundQuery(undefined);
-
-  const foundData = data?.data;
+  const { data: foundData, isLoading } = useGetAllFoundQuery({ undefined });
 
   if (isLoading) {
     return <AppLoading />;
   }
 
-  if (!isLoading && foundData?.length <= 0) {
+  if (!isLoading && foundData?.data?.data.length <= 0) {
     return (
       <div className="container mx-auto min-h-screen">
         <Empty />
@@ -51,10 +49,10 @@ function AllFoundItem() {
 
   return (
     <div className="container mx-auto min-h-screen">
-      <h3 className="text-4xl text-center font-bold my-5">My Found Items</h3>
+      <h3 className="text-4xl text-center font-bold my-5">All Found Items</h3>
       <Table
         columns={columns}
-        dataSource={foundData || []}
+        dataSource={foundData?.data?.data || []}
         rowKey={(record: any) => record.id}
         pagination={{ pageSize: 10 }}
         scroll={{ x: "max-content" }} // Enables horizontal scrolling on smaller screens

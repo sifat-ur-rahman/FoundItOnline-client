@@ -6,14 +6,13 @@ import { Table, Empty } from "antd";
 import Image from "next/image";
 
 function AllLostItem() {
-  const { data, isLoading } = useGetAllLostQuery(undefined);
-  const lostData = data?.data;
-
+  const { data: lostData, isLoading } = useGetAllLostQuery({ undefined });
+  console.log(lostData?.data);
   if (isLoading) {
     return <AppLoading />;
   }
 
-  if (!isLoading && lostData?.length <= 0) {
+  if (!isLoading && lostData?.data?.data.length <= 0) {
     return (
       <div className="container mx-auto min-h-screen">
         <Empty />
@@ -57,10 +56,10 @@ function AllLostItem() {
       <h3 className="text-4xl text-center font-bold my-5">All Lost Items</h3>
       <Table
         columns={columns}
-        dataSource={lostData || []}
+        dataSource={lostData?.data?.data || []}
         rowKey={(record: any) => record.id}
         pagination={{ pageSize: 10 }}
-        scroll={{ x: "max-content" }} // ensures horizontal scrolling for smaller screens
+        scroll={{ x: "max-content" }}
       />
     </div>
   );
