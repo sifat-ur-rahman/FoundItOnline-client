@@ -1,45 +1,64 @@
 "use client";
+import React from "react";
 import AppLoading from "@/app/components/ui/AppLoading";
 import { useGetAllFoundQuery } from "@/app/states/features/found/foundApi";
+import { Table, Empty } from "antd";
 import Image from "next/image";
-import Link from "next/link";
-import { LeftCircleOutlined } from "@ant-design/icons";
-import { Empty } from "antd";
 
 function AllFoundItem() {
-  const { data, isLoading } = useGetAllFoundQuery({ undefined });
+  const { data, isLoading } = useGetAllFoundQuery(undefined);
 
   const foundData = data?.data;
+
   if (isLoading) {
     return <AppLoading />;
   }
-  if (!isLoading && foundData?.data?.length <= 0) {
+
+  if (!isLoading && foundData?.length <= 0) {
     return (
       <div className="container mx-auto min-h-screen">
         <Empty />
       </div>
     );
   }
+
+  const columns = [
+    {
+      title: "Image",
+      dataIndex: "images",
+      key: "images",
+      render: (text: string) => (
+        <Image src={text} alt="img" width={70} height={60} />
+      ),
+    },
+    {
+      title: "Category",
+      dataIndex: "category",
+      key: "category",
+    },
+    {
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+      ellipsis: true,
+    },
+    {
+      title: "Found Location",
+      dataIndex: "locationFound",
+      key: "locationFound",
+    },
+  ];
+
   return (
     <div className="container mx-auto min-h-screen">
-      <h3 className="text-4xl text-center font-bold my-5">My Found Item</h3>
-      <div className="grid grid-cols-2 font-bold lg:grid-cols-4 gap-3 bg-green-100 rounded-xl text-xl p-2 my-3 items-center  justify-items-center px-5">
-        <p>Image</p>
-        <p>Category</p>
-        <p>Description</p>
-        <p>Found Location</p>
-      </div>
-      {foundData?.data.map((data: any) => (
-        <div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-3 bg-green-100 rounded-xl text-xl p-2 my-3 items-center  justify-items-center px-5"
-          key={data.id}
-        >
-          <Image src={data?.images} alt="img" width={70} height={60} />
-          <p>{data?.category}</p>
-          <p>{data?.description}</p>
-          <p>{data?.locationFound}</p>
-        </div>
-      ))}
+      <h3 className="text-4xl text-center font-bold my-5">My Found Items</h3>
+      <Table
+        columns={columns}
+        dataSource={foundData || []}
+        rowKey={(record: any) => record.id}
+        pagination={{ pageSize: 10 }}
+        scroll={{ x: "max-content" }} // Enables horizontal scrolling on smaller screens
+      />
     </div>
   );
 }

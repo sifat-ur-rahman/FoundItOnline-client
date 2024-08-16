@@ -1,17 +1,17 @@
 "use client";
+import React from "react";
+import { Table, Dropdown, Menu, Space, Empty } from "antd";
 import AppLoading from "@/app/components/ui/AppLoading";
 import {
   useGetAllUsersQuery,
   useUpdateUserStatusMutation,
 } from "@/app/states/features/user/userApi";
-
-import { Dropdown, Empty, Menu, Space } from "antd";
 import { toast } from "react-toastify";
 
 function AllUsers() {
   const [UpdateUserStatus] = useUpdateUserStatusMutation();
-  const { data: userData, isLoading } = useGetAllUsersQuery({ undefined });
-  console.log(userData);
+  const { data: userData, isLoading } = useGetAllUsersQuery(undefined);
+
   if (isLoading) {
     return <AppLoading />;
   }
@@ -23,13 +23,13 @@ function AllUsers() {
         status: data.status,
       },
     };
-    console.log(queryData);
+
     const res: any = await UpdateUserStatus(queryData);
-    console.log({ res });
+
     if (!res?.data?.success) {
-      toast.error(res?.message || "something went wrong");
+      toast.error(res?.message || "Something went wrong");
     } else {
-      toast.success("Successfully Update User Status");
+      toast.success("Successfully Updated User Status");
     }
   };
 
@@ -49,6 +49,37 @@ function AllUsers() {
     />
   );
 
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Username",
+      dataIndex: "username",
+      key: "username",
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_: any, record: any) => (
+        <Dropdown overlay={getMenu(record.id)} placement="bottom" arrow>
+          <Space wrap size={16}>
+            <button className="border p-2 rounded-lg border-blue-200">
+              Action
+            </button>
+          </Space>
+        </Dropdown>
+      ),
+    },
+  ];
+
   if (!isLoading && userData?.data?.length <= 0) {
     return (
       <div className="container mx-auto min-h-screen">
@@ -59,32 +90,14 @@ function AllUsers() {
 
   return (
     <div className="container mx-auto min-h-screen">
-      <h3 className="text-4xl text-center font-bold my-5">All Users </h3>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 bg-rose-50 rounded-xl text-xl p-2 my-3 items-center  justify-items-start lg:px-5">
-        <p className="font-bold"> Name</p>
-        <p className="font-bold">UserName</p>
-
-        <p className="font-bold"> Status</p>
-        <p className="font-bold"> Action</p>
-      </div>
-      {userData?.data.map((data: any) => (
-        <div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-5 bg-rose-50 rounded-xl text-xl p-2 my-3 items-center  justify-items-start lg:px-5"
-          key={data.id}
-        >
-          <p>{data?.name}</p>
-          <p>{data?.username}</p>
-
-          <p>{data?.status}</p>
-          <Dropdown overlay={getMenu(data.id)} placement="bottom" arrow>
-            <Space wrap size={16}>
-              <button className="border p-2 rounded-lg border-blue-200">
-                Action
-              </button>
-            </Space>
-          </Dropdown>
-        </div>
-      ))}
+      <h3 className="text-4xl text-center font-bold my-5">All Users</h3>
+      <Table
+        columns={columns}
+        dataSource={userData?.data || []}
+        rowKey={(record: any) => record.id}
+        pagination={{ pageSize: 10 }}
+        scroll={{ x: "max-content" }}
+      />
     </div>
   );
 }

@@ -2,13 +2,11 @@ import {
   FaFacebook,
   FaTwitter,
   FaInstagram,
-  FaCalendarAlt,
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { CgMail } from "react-icons/cg";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import logo from "@/app/assets/navLogo.png";
-import Link from "next/link";
 import Image from "next/image";
 
 function Footer() {
@@ -50,9 +48,8 @@ function Footer() {
             <div className="text-center lg:text-left">
               <h4 className="text-blue-600 text-2xl font-bold">About Us</h4>
               <p className="mt-4 text-textBlack">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit class
-                taciti rhoncus, id parturient dignissim facilisis lobortis
-                varius justo tempor magnis
+                Provide detailed descriptions including unique identifiers.
+                Mention the exact date and location.
               </p>
               <div className="mt-4 flex items-center justify-center">
                 {socialLinks.map((link) => (
@@ -90,17 +87,17 @@ function Footer() {
               </h3>
               <ul>
                 <li className="mb-2 text-textBlack transition-all duration-300 hover:text-slate-400 hover:ml-4 cursor-pointer">
-                  <Link href="/whatWeDo">What We Do</Link>
+                  What We Do
                 </li>
 
                 <li className="mb-2 text-textBlack transition-all duration-300 hover:text-slate-400 hover:ml-4 cursor-pointer">
-                  <Link href="/Faq">Faq Ask</Link>
+                  Faq Ask
                 </li>
                 <li className="mb-2 text-textBlack transition-all duration-300 hover:text-slate-400 hover:ml-4 cursor-pointer">
-                  <Link href="/contact">Contact Us</Link>
+                  Contact Us
                 </li>
                 <li className="mb-2 text-textBlack transition-all duration-300 hover:text-slate-400 hover:ml-4 cursor-pointer">
-                  <Link href="/privacy">Privacy & Terms</Link>
+                  Privacy & Terms
                 </li>
               </ul>
             </div>
