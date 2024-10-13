@@ -88,7 +88,7 @@ function AllFoundItem() {
             className="border  flex flex-col  hover:border-green-300 rounded-xl text-xl p-2 my-3 items-center  justify-items-center px-5"
             key={item.id}
           >
-            <div className="h-[200] mb-2 flex items-center">
+            <div className="max-h-full my-2 flex items-center">
               <Image src={item?.images} alt="img" width={200} height={160} />
             </div>
             <div>
@@ -103,6 +103,7 @@ function AllFoundItem() {
                 <span className="font-bold">{item?.locationFound}</span>
               </p>
             </div>
+
             <AppModal
               button={
                 <button
