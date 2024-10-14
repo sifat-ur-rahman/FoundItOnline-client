@@ -3,6 +3,7 @@
 import { useGetAllLostQuery } from "@/app/states/features/lost/lostApi";
 import Image from "next/image";
 import Link from "next/link";
+import AppModal from "../AppModal";
 
 function LostItem() {
   const { data, isLoading } = useGetAllLostQuery({ undefined });
@@ -35,6 +36,29 @@ function LostItem() {
                 <span className="font-bold">{data?.locationLost}</span>
               </p>
             </div>
+            <AppModal
+              button={
+                <button className="px-6 py-3  place-self-center bottom-0 bg-blue-600 font-bold text-white rounded-lg my-3 border border-blue-600 hover:bg-blue-100 hover:text-blue-700 ">
+                  Details
+                </button>
+              }
+            >
+              <div className="w-[200] mb-2">
+                <Image src={data?.images} alt="img" width={200} height={160} />
+              </div>
+              <div>
+                <p>
+                  Category: <span className="font-bold">{data?.category}</span>
+                </p>
+                <p>
+                  Description:<p className="font-bold">{data?.description}</p>
+                </p>
+                <p>
+                  Lost Location:{" "}
+                  <span className="font-bold">{data?.locationLost}</span>
+                </p>
+              </div>
+            </AppModal>
           </div>
         ))}
       </div>
