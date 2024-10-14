@@ -78,92 +78,100 @@ function AddLostItem() {
 
   return (
     <div>
-      <div className="w-full lg:w-[100%]   px-4 lg:px-0 overflow-auto flex items-center justify-center ">
-        <div className="w-full lg:max-w-lg mx-auto py-8  lg:py-20 2xl:py-36">
+      <div className="w-full  px-4 lg:px-0 overflow-auto flex items-center justify-center ">
+        <div className="py-8  lg:py-20 2xl:py-36">
           <h2 className="text-2xl lg:text-4xl font-bold text-textBlack pb-1 lg:pb-2 text-center">
             Describe the Object you Lost
           </h2>
 
           <form
-            className="w-full md:w-[500px] 2xl:w-[560px] py-4 2xl:py-5 space-y-3 lg:space-y-4 2xl:space-y-5"
+            className="w-full  py-4 2xl:py-5 space-y-3 lg:space-y-4 2xl:space-y-5"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <AppFormInput
-              name="images"
-              required={true}
-              register={register}
-              type="file"
-              label="Image"
-              placeholder="product images"
-              error={errors.images}
-            />
-            <AppFormInput
-              name="category"
-              required={true}
-              register={register}
-              type="text"
-              label="Category"
-              placeholder="product category"
-              error={errors.category}
-            />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="py-4 w-full 2xl:py-5 space-y-3 lg:space-y-4 2xl:space-y-5">
+                <AppFormInput
+                  name="images"
+                  required={true}
+                  register={register}
+                  type="file"
+                  label="Image"
+                  placeholder="product images"
+                  error={errors.images}
+                />
+                <AppFormInput
+                  name="category"
+                  required={true}
+                  register={register}
+                  type="text"
+                  label="Category"
+                  placeholder="product category"
+                  error={errors.category}
+                />
 
-            <AppFormInput
-              name="description"
-              required={true}
-              register={register}
-              type="text"
-              label="Description"
-              placeholder="product short description"
-              error={errors.description}
-            />
-            <AppFormInput
-              name="dateLost"
-              required={true}
-              register={register}
-              type="date"
-              label="Lost date"
-              placeholder="Lost date"
-              error={errors.dateLost}
-            />
+                <AppFormInput
+                  name="description"
+                  required={true}
+                  register={register}
+                  type="text"
+                  label="Description"
+                  placeholder="product short description"
+                  error={errors.description}
+                />
+                <AppFormInput
+                  name="dateLost"
+                  required={true}
+                  register={register}
+                  type="date"
+                  label="Lost date"
+                  placeholder="Lost date"
+                  error={errors.dateLost}
+                />
+              </div>
+              <div className="py-4 w-full 2xl:py-5 space-y-3 lg:space-y-4 2xl:space-y-5">
+                <AppFormInput
+                  name="locationLost"
+                  required={true}
+                  register={register}
+                  type="text"
+                  label="Lost location"
+                  placeholder="Lost location"
+                  error={errors.locationLost}
+                />
+                <AppFormInput
+                  name="contactPhone"
+                  required={true}
+                  register={register}
+                  type="text"
+                  label="contactPhone"
+                  placeholder="your phone number"
+                  error={errors.contactPhone}
+                />
 
-            <AppFormInput
-              name="locationLost"
-              required={true}
-              register={register}
-              type="text"
-              label="Lost location"
-              placeholder="Lost location"
-              error={errors.locationLost}
-            />
-            <AppFormInput
-              name="contactPhone"
-              required={true}
-              register={register}
-              type="text"
-              label="contactPhone"
-              placeholder="your phone number"
-              error={errors.contactPhone}
-            />
+                <AppFormInput
+                  name="contactEmail"
+                  required={true}
+                  register={register}
+                  type="text"
+                  label="contactEmail"
+                  placeholder="your email "
+                  error={errors.contactEmail}
+                />
 
-            <AppFormInput
-              name="contactEmail"
-              required={true}
-              register={register}
-              type="text"
-              label="contactEmail"
-              placeholder="your email "
-              error={errors.contactEmail}
-            />
-
-            {isLoading ? (
-              <button className="appBtn px-10 flex items-center justify-center w-full mt-4 lg:mt-6 ">
-                <AiOutlineLoading3Quarters className="animate-spin text-white text-2xl" />
-              </button>
-            ) : (
-              <button type="submit" className="appBtn mt-4 lg:mt-6 w-full">
-                Submit
-              </button>
-            )}
+                {isLoading ? (
+                  <button className="appBtn px-10 py-2 flex items-center justify-center w-full mt-4 lg:mt-6 ">
+                    <AiOutlineLoading3Quarters className="animate-spin text-white text-2xl" />
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    className="appBtn p-2 text-xl mt-4 lg:mt-6 w-full"
+                  >
+                    Submit
+                  </button>
+                )}
+              </div>
+            </div>
           </form>
         </div>
       </div>

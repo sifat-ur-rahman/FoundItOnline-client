@@ -15,7 +15,7 @@ function LostItem() {
       <h3 className="text-4xl  text-center font-bold my-10">
         Recent Lost Item
       </h3>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:mx-0 mx-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:mx-0 mx-4">
         {lostData?.data.slice(0, 3).map((data: any) => (
           <div
             className="border flex flex-col  hover:border-green-300 rounded-xl text-xl p-2 my-3 items-center  justify-items-center px-5"
