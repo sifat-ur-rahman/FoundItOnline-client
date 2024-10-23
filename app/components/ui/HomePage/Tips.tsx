@@ -4,7 +4,7 @@ import tipsImg from "@/app/assets/img03.png";
 function Tips() {
   return (
     <div className="mt-10 max-w-[1130] container mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-4 items-center justify-items-center">
-      <div className="mx-5 lg:mx-0">
+      <div data-aos="fade-right" className="mx-5 lg:mx-0">
         <h4 className="text-3xl font-bold my-5">
           Advice for Reporting Lost or Found Items:
         </h4>

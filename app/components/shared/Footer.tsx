@@ -21,7 +21,7 @@ function Footer() {
   ];
 
   return (
-    <footer className="text-slate-500 bg font-medium relative px-2">
+    <footer className="text-slate-500 max-w-[1280] container mx-auto bg font-medium relative px-2">
       <div className="shadow-t sm:shadow-md py-8">
         <div className="container mx-auto">
           <section className="mb-10 flex lg:flex-row flex-col items-center self-center justify-between px-8 py-1 border-2">
