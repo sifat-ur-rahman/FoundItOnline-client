@@ -4,19 +4,22 @@ import { useGetAllFoundQuery } from "@/app/states/features/found/foundApi";
 import Image from "next/image";
 import Link from "next/link";
 import AppModal from "../AppModal";
+import { Spin } from "antd";
 
 function FoundItem() {
   const { data, isLoading } = useGetAllFoundQuery({ undefined });
 
   const foundData = data?.data;
-
+  if (isLoading) {
+    <Spin />;
+  }
   return (
     <div className="container mx-auto max-w-[1130] flex flex-col items-center mt-7">
       <h3 className="text-4xl  text-center font-bold my-10">
         Recent Found Item
       </h3>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:mx-0 mx-4">
-        {foundData?.data.slice(0, 4).map((data: any) => (
+        {foundData?.data.slice(0, 3).map((data: any) => (
           <div
             className="border w-full  flex flex-col  hover:border-green-300 rounded-xl text-xl p-2 my-3 items-center  justify-items-center px-5"
             key={data.id}

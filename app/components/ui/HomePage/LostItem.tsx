@@ -4,12 +4,16 @@ import { useGetAllLostQuery } from "@/app/states/features/lost/lostApi";
 import Image from "next/image";
 import Link from "next/link";
 import AppModal from "../AppModal";
+import { Spin } from "antd";
 
 function LostItem() {
   const { data, isLoading } = useGetAllLostQuery({ undefined });
 
   const lostData = data?.data;
-  console.log({ lostData });
+
+  if (isLoading) {
+    <Spin />;
+  }
   return (
     <div className="container mx-auto flex flex-col items-center">
       <h3 className="text-4xl  text-center font-bold my-10">
@@ -43,20 +47,37 @@ function LostItem() {
                 </button>
               }
             >
-              <div className="w-[200] mb-2">
-                <Image src={data?.images} alt="img" width={200} height={160} />
-              </div>
-              <div>
-                <p>
-                  Category: <span className="font-bold">{data?.category}</span>
-                </p>
-                <p>
-                  Description:<p className="font-bold">{data?.description}</p>
-                </p>
-                <p>
-                  Lost Location:{" "}
-                  <span className="font-bold">{data?.locationLost}</span>
-                </p>
+              {" "}
+              <div className="grid grid-cols-2 p-8 gap-6 items-center">
+                <div className="w-[200] mb-2">
+                  <Image
+                    src={data?.images}
+                    alt="img"
+                    width={200}
+                    height={160}
+                  />
+                </div>
+                <div className="text-lg">
+                  <p>
+                    Category:{" "}
+                    <span className="font-bold">{data?.category}</span>
+                  </p>
+                  <p>
+                    Description:<p className="font-bold">{data?.description}</p>
+                  </p>
+                  <p>
+                    Lost Location:{" "}
+                    <span className="font-bold">{data?.locationLost}</span>
+                  </p>
+                  <p>
+                    Contact Email:{" "}
+                    <span className="font-bold">{data?.contactEmail}</span>
+                  </p>
+                  <p>
+                    Contact Phone No:{" "}
+                    <span className="font-bold">{data?.contactPhone}</span>
+                  </p>
+                </div>
               </div>
             </AppModal>
           </div>
