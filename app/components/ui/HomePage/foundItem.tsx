@@ -11,12 +11,12 @@ function FoundItem() {
   const foundData = data?.data;
 
   return (
-    <div className="container mx-auto flex flex-col items-center">
+    <div className="container mx-auto max-w-[1130] flex flex-col items-center mt-7">
       <h3 className="text-4xl  text-center font-bold my-10">
         Recent Found Item
       </h3>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:mx-0 mx-4">
-        {foundData?.data.slice(0, 3).map((data: any) => (
+        {foundData?.data.slice(0, 4).map((data: any) => (
           <div
             className="border w-full  flex flex-col  hover:border-green-300 rounded-xl text-xl p-2 my-3 items-center  justify-items-center px-5"
             key={data.id}
@@ -43,20 +43,36 @@ function FoundItem() {
                 </button>
               }
             >
-              <div className="h-[200] mb-2 flex items-center">
-                <Image src={data?.images} alt="img" width={200} height={160} />
-              </div>
-              <div>
-                <p>
-                  Category: <span className="font-bold">{data?.category}</span>
-                </p>
-                <p>
-                  Description:<p className="font-bold">{data?.description}</p>
-                </p>
-                <p>
-                  Found Location:{" "}
-                  <span className="font-bold">{data?.locationFound}</span>
-                </p>
+              <div className="grid grid-cols-2 p-8 gap-6 items-center">
+                <div className="h-[200] mb-2 flex items-center">
+                  <Image
+                    src={data?.images}
+                    alt="img"
+                    width={200}
+                    height={160}
+                  />
+                </div>
+                <div className="text-lg">
+                  <p>
+                    Category:{" "}
+                    <span className="font-bold">{data?.category}</span>
+                  </p>
+                  <p>
+                    Description:<p className="font-bold">{data?.description}</p>
+                  </p>
+                  <p>
+                    Found Location:{" "}
+                    <span className="font-bold">{data?.locationFound}</span>
+                  </p>
+                  <p>
+                    Contact Email:{" "}
+                    <span className="font-bold">{data?.contactEmail}</span>
+                  </p>
+                  <p>
+                    Contact Phone No:{" "}
+                    <span className="font-bold">{data?.contactPhone}</span>
+                  </p>
+                </div>
               </div>
             </AppModal>
           </div>

@@ -1,8 +1,6 @@
-import Image from "next/image";
-
 function Testimonials() {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto max-w-[1130]">
       <h4 className="text-4xl  text-center font-bold my-10">
         Our Success Stories:
       </h4>
