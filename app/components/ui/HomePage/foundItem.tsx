@@ -14,7 +14,7 @@ function FoundItem() {
     <Spin />;
   }
   return (
-    <div className="container mx-auto max-w-[1130] flex flex-col items-center mt-7">
+    <div className="container mx-auto max-w-[1130] flex flex-col items-center justify-items-center justify-center mt-7">
       <h3 className="text-4xl  text-center font-bold my-10">
         Recent Found Item
       </h3>

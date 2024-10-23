@@ -15,7 +15,7 @@ function LostItem() {
     <Spin />;
   }
   return (
-    <div className="container mx-auto flex flex-col items-center">
+    <div className="container mx-auto flex flex-col items-center mt-7 justify-center justify-items-center">
       <h3 className="text-4xl  text-center font-bold my-10">
         Recent Lost Item
       </h3>
