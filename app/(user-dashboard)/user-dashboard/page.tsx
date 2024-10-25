@@ -26,42 +26,12 @@ function Profile() {
 
   return (
     <div className="min-h-screen container mx-auto">
-      <div className="flex justify-between ">
-        <Link href={"/auth/change-password"}>
-          <Popover title="Change your password">
-            <FaKey className="text-2xl hover:text-blue-500 " />
-          </Popover>
-        </Link>
-        <Link href={"/profile/update-profile"}>
-          <Popover title="Edit your profile">
-            <FaRegEdit className="text-2xl  hover:text-blue-500" />
-          </Popover>
-        </Link>
-      </div>
-      <div className="my-10  grid grid-cols-1 lg:grid-cols-2 gap-7">
-        <div className="bg-slate-200 p-3 rounded-xl font-bold">
-          <p className="text-xl ">Name:</p>
-          <p className="text-lg ">{userInfo?.name}</p>
-        </div>
-        <div className="bg-slate-200 p-3 rounded-xl font-bold">
-          <p className="text-xl ">User Name:</p>
-          <p className="text-lg ">{userInfo?.username}</p>
-        </div>
-        <div className="bg-slate-200 p-3 rounded-xl font-bold">
-          <p className="text-xl ">Email:</p>
-          <p className="text-lg ">{userInfo?.email}</p>
-        </div>
-        <div className="bg-slate-200 p-3 rounded-xl font-bold">
-          <p className="text-xl ">States:</p>
-          <p className="text-lg ">{userInfo?.status}</p>
-        </div>
-      </div>
       <h4 className="text-4xl text-center font-extrabold my-7">
-        Your Activity
+        User Dashboard
       </h4>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-10">
         <Link
-          href={"/profile/my-lost-item"}
+          href={"/my-lost-item"}
           className="flex flex-col border hover:border-orange-400 hover:bg-orange-50 items-center p-4 rounded-2xl"
         >
           <p className="text-2xl font-bold">You have</p>
@@ -74,7 +44,7 @@ function Profile() {
           </p>
         </Link>
         <Link
-          href={"/profile/my-found-item"}
+          href={"/my-found-item"}
           className="flex flex-col border hover:border-green-400 hover:bg-green-50 items-center p-4 rounded-2xl"
         >
           <p className="text-2xl font-bold">You have</p>
@@ -87,7 +57,7 @@ function Profile() {
           </p>
         </Link>
         <Link
-          href={"/profile/my-claim-item"}
+          href={"/my-claim-item"}
           className="flex flex-col border hover:border-amber-300 hover:bg-amber-50 items-center p-4 rounded-2xl"
         >
           <p className="text-2xl font-bold">You have</p>

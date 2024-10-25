@@ -8,8 +8,9 @@ import { MdDashboard } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { LogoutOutlined } from "@ant-design/icons";
+import { FaKey } from "react-icons/fa";
 
-const Sidebar = ({ isOpen }: { isOpen: any }) => {
+const UserSidebar = ({ isOpen }: { isOpen: any }) => {
   const pathname = usePathname();
   const dispatch = useAppDispatch();
 
@@ -19,39 +20,39 @@ const Sidebar = ({ isOpen }: { isOpen: any }) => {
   };
   const sidebarLinks = [
     {
-      path: "/dashboard",
+      path: "/user-dashboard",
       Icon: MdDashboard,
       label: "Dashboard",
       relativePath: "",
     },
     {
-      path: "/profile",
+      path: "/user-dashboard/profile",
       Icon: CgProfile,
       label: "Profile",
       relativePath: "",
     },
     {
-      path: "/dashboard/all-users",
-      Icon: TbLogs,
-      label: "Users",
-      relativePath: "",
-    },
-    {
-      path: "/dashboard/all-lost-item",
+      path: "/user-dashboard/my-lost-item",
       Icon: TbLogs,
       label: "Lost Item",
       relativePath: "",
     },
     {
-      path: "/dashboard/all-found-item",
+      path: "/user-dashboard/my-found-item",
       Icon: TbLogs,
       label: "Found Item",
       relativePath: "",
     },
     {
-      path: "/dashboard/all-claim-item",
+      path: "/user-dashboard/my-claim-item",
       Icon: TbLogs,
       label: "Claim Item",
+      relativePath: "",
+    },
+    {
+      path: "/auth/change-password",
+      Icon: FaKey,
+      label: "Change password",
       relativePath: "",
     },
     {
@@ -109,4 +110,4 @@ const Sidebar = ({ isOpen }: { isOpen: any }) => {
   );
 };
 
-export default Sidebar;
+export default UserSidebar;

@@ -20,10 +20,6 @@ const Navbar = () => {
 
   const items: MenuProps["items"] = [
     {
-      key: "1",
-      label: <Link href="/profile">Profile</Link>,
-    },
-    {
       key: "2",
       label: (
         <Link className="lg:hidden block hover:text-blue-500" href="/about-us">
@@ -56,6 +52,11 @@ const Navbar = () => {
           </Link>
           {user?.role === "ADMIN" && (
             <Link className="hover:text-blue-500" href={"/dashboard"}>
+              Dashboard
+            </Link>
+          )}
+          {user?.role === "USER" && (
+            <Link className="hover:text-blue-500" href={"/user-dashboard"}>
               Dashboard
             </Link>
           )}
