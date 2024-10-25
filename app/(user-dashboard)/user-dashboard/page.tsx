@@ -1,5 +1,7 @@
 "use client";
 import AppLoading from "@/app/components/ui/AppLoading";
+import DoughnutChart from "@/app/components/ui/DoughnutChart";
+import UserChart from "@/app/components/ui/UserChart";
 
 import { useGetClaimByUserQuery } from "@/app/states/features/claim/claimApi";
 import { useGetFoundByUserQuery } from "@/app/states/features/found/foundApi";
@@ -29,9 +31,9 @@ function Profile() {
       <h4 className="text-4xl text-center font-extrabold my-7">
         User Dashboard
       </h4>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-10">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
         <Link
-          href={"/my-lost-item"}
+          href={"/user-dashboard/my-lost-item"}
           className="flex flex-col border hover:border-orange-400 hover:bg-orange-50 items-center p-4 rounded-2xl"
         >
           <p className="text-2xl font-bold">You have</p>
@@ -44,7 +46,7 @@ function Profile() {
           </p>
         </Link>
         <Link
-          href={"/my-found-item"}
+          href={"/user-dashboard/my-found-item"}
           className="flex flex-col border hover:border-green-400 hover:bg-green-50 items-center p-4 rounded-2xl"
         >
           <p className="text-2xl font-bold">You have</p>
@@ -57,7 +59,7 @@ function Profile() {
           </p>
         </Link>
         <Link
-          href={"/my-claim-item"}
+          href={"/user-dashboard/my-claim-item"}
           className="flex flex-col border hover:border-amber-300 hover:bg-amber-50 items-center p-4 rounded-2xl"
         >
           <p className="text-2xl font-bold">You have</p>
@@ -69,6 +71,14 @@ function Profile() {
             see more <ArrowRightOutlined />
           </p>
         </Link>
+      </div>
+      <div className="grid grid-cols-3">
+        <div className="col-span-2">
+          <UserChart />
+        </div>
+        <div>
+          <DoughnutChart />
+        </div>
       </div>
     </div>
   );

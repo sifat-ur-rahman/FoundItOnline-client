@@ -1,5 +1,7 @@
 "use client";
 
+import DoughnutChart from "@/app/components/ui/DoughnutChart";
+import UserChart from "@/app/components/ui/UserChart";
 import { useGetAllClaimQuery } from "@/app/states/features/claim/claimApi";
 import { useGetAllFoundQuery } from "@/app/states/features/found/foundApi";
 import { useGetAllLostQuery } from "@/app/states/features/lost/lostApi";
@@ -17,23 +19,11 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen container mx-auto">
-      <div className="flex justify-between ">
-        <Link href={"/auth/change-password"}>
-          <Popover title="Change your password">
-            <FaKey className="text-2xl hover:text-blue-500 " />
-          </Popover>
-        </Link>
-        <Link href={"/profile/update-profile"}>
-          <Popover title="Edit your profile">
-            <FaRegEdit className="text-2xl  hover:text-blue-500" />
-          </Popover>
-        </Link>
-      </div>
-
-      <h4 className="text-4xl text-center font-extrabold my-7">
-        Welcome to foundIt Online <br /> Dashboard
+      <h4 className="text-3xl text-center font-extrabold my-7">
+        Welcome to foundIt Online <br />{" "}
+        <samp className="text-blue-500"> Admin Dashboard</samp>
       </h4>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-10">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
         <Link
           href={"/dashboard/all-users"}
           className="flex flex-col border hover:border-blue-400 hover:bg-blue-50 items-center p-4 rounded-2xl"
@@ -86,6 +76,14 @@ function Dashboard() {
             see more <ArrowRightOutlined />
           </p>
         </Link>
+      </div>
+      <div className="grid grid-cols-3 gap-9 items-start">
+        <div className="col-span-2">
+          <UserChart />
+        </div>
+        <div>
+          <DoughnutChart />
+        </div>
       </div>
     </div>
   );

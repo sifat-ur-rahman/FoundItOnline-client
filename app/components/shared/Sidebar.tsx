@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { MdDashboard } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
 import { toast } from "react-toastify";
+import { FaKey } from "react-icons/fa";
 import { LogoutOutlined } from "@ant-design/icons";
 
 const Sidebar = ({ isOpen }: { isOpen: any }) => {
@@ -25,7 +26,7 @@ const Sidebar = ({ isOpen }: { isOpen: any }) => {
       relativePath: "",
     },
     {
-      path: "/profile",
+      path: "/dashboard/profile",
       Icon: CgProfile,
       label: "Profile",
       relativePath: "",
@@ -52,6 +53,12 @@ const Sidebar = ({ isOpen }: { isOpen: any }) => {
       path: "/dashboard/all-claim-item",
       Icon: TbLogs,
       label: "Claim Item",
+      relativePath: "",
+    },
+    {
+      path: "/auth/change-password",
+      Icon: FaKey,
+      label: "Change password",
       relativePath: "",
     },
     {
